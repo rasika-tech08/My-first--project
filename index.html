@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DisasterShield - Advanced Disaster Preparedness System</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-mode">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-shield-alt logo-icon"></i>
+            <span class="logo-text">DisasterShield</span>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="active" data-page="home"><i class="fas fa-home"></i> <span data-i18n="nav_home">Home</span></li>
+                <li data-page="modules"><i class="fas fa-book-open"></i> <span data-i18n="nav_modules">Awareness Modules</span></li>
+                <li data-page="quiz"><i class="fas fa-question-circle"></i> <span data-i18n="nav_quiz">Interactive Quiz</span></li>
+                <li data-page="weather"><i class="fas fa-cloud-sun"></i> <span data-i18n="nav_weather">Weather Alert</span></li>
+                <li data-page="checklist"><i class="fas fa-tasks"></i> <span data-i18n="nav_checklist">Checklist</span></li>
+                <li data-page="emergency"><i class="fas fa-phone-alt"></i> <span data-i18n="nav_emergency">Emergency Contacts</span></li>
+                <li data-page="sos"><i class="fas fa-exclamation-triangle"></i> <span data-i18n="nav_sos">Emergency SOS</span></li>
+                <li data-page="learning"><i class="fas fa-graduation-cap"></i> <span data-i18n="nav_learning">Learning Center</span></li>
+                <li data-page="dashboard"><i class="fas fa-user-circle"></i> <span data-i18n="nav_dashboard">Student Dashboard</span></li>
+                <li data-page="faq"><i class="fas fa-info-circle"></i> <span data-i18n="nav_faq">FAQ</span></li>
+                <li data-page="about"><i class="fas fa-address-card"></i> <span data-i18n="nav_about">About</span></li>
+                <li data-page="contact"><i class="fas fa-envelope"></i> <span data-i18n="nav_contact">Contact Us</span></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <!-- Top Navigation Bar -->
+        <header class="top-bar">
+            <div class="top-bar-left">
+                <button id="toggle-sidebar" aria-label="Toggle Sidebar"><i class="fas fa-bars"></i></button>
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Search safety tips..." data-i18n-placeholder="search_placeholder">
+                </div>
+            </div>
+            <div class="top-bar-right">
+                <div class="language-selector">
+                    <i class="fas fa-globe"></i>
+                    <select id="lang-switch">
+                        <option value="en">English</option>
+                        <option value="hi">हिन्दी (Hindi)</option>
+                        <option value="ta">தமிழ் (Tamil)</option>
+                    </select>
+                </div>
+                <button id="theme-toggle" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
+                <div class="user-actions">
+                    <button id="login-btn" class="btn-outline" data-i18n="login">Login</button>
+                    <button id="register-btn" class="btn-primary" data-i18n="register">Register</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Sections -->
+        <div id="content-area">
+            <!-- Home Page -->
+            <section id="home" class="page-section active">
+                <div class="hero">
+                    <div class="hero-content">
+                        <h1 id="hero-title" data-i18n="hero_title">Be Prepared, Stay Safe</h1>
+                        <p id="hero-desc" data-i18n="hero_desc">Your comprehensive education system for disaster awareness, preparedness, and response. Empowering communities through knowledge.</p>
+                        <div class="hero-btns">
+                            <button class="btn-primary" onclick="navigateTo('modules')" data-i18n="btn_start">Start Learning</button>
+                            <button class="btn-outline" onclick="navigateTo('sos')" data-i18n="btn_sos">Emergency SOS</button>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1504150559433-c516936798d4?auto=format&fit=crop&w=800&q=80" alt="Disaster Preparedness">
+                    </div>
+                </div>
+                
+                <div class="stats-overview">
+                    <div class="stat-card">
+                        <h3 id="stat-modules">10+</h3>
+                        <p data-i18n="stat_modules_text">Awareness Modules</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="stat-quizzes">50+</h3>
+                        <p data-i18n="stat_quizzes_text">Practice Quizzes</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 id="stat-users">10k+</h3>
+                        <p data-i18n="stat_users_text">Active Learners</p>
+                    </div>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card" onclick="navigateTo('modules')">
+                        <div class="f-icon"><i class="fas fa-book"></i></div>
+                        <h3 data-i18n="feat_modules">Awareness Modules</h3>
+                        <p data-i18n="feat_modules_desc">Detailed guides on 10+ disaster types with safety protocols.</p>
+                    </div>
+                    <div class="feature-card" onclick="navigateTo('quiz')">
+                        <div class="f-icon"><i class="fas fa-check-square"></i></div>
+                        <h3 data-i18n="feat_quiz">Interactive Quizzes</h3>
+                        <p data-i18n="feat_quiz_desc">Test your knowledge and earn safety certificates.</p>
+                    </div>
+                    <div class="feature-card" onclick="toggleChat()">
+                        <div class="f-icon"><i class="fas fa-robot"></i></div>
+                        <h3 data-i18n="feat_ai">AI Assistant</h3>
+                        <p data-i18n="feat_ai_desc">Get instant answers to your disaster-related questions.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Disaster Modules -->
+            <section id="modules" class="page-section">
+                <h2 class="section-title" data-i18n="modules_title">Disaster Awareness Modules</h2>
+                <div class="modules-grid" id="modules-list">
+                    <!-- 10 Modules will be injected by JS -->
+                </div>
+                
+                <!-- Single Module Detail View -->
+                <div id="module-detail" class="module-detail-view hidden">
+                    <button class="back-btn" onclick="showModulesList()"><i class="fas fa-arrow-left"></i> <span data-i18n="back_to_modules">Back to Modules</span></button>
+                    <div id="module-content"></div>
+                </div>
+            </section>
+
+            <!-- Quiz System -->
+            <section id="quiz" class="page-section">
+                <h2 class="section-title" data-i18n="quiz_title">Safety Quiz & Certification</h2>
+                <div id="quiz-intro" class="quiz-container">
+                    <div class="quiz-icon-box"><i class="fas fa-award"></i></div>
+                    <h3 data-i18n="quiz_intro_h">Test Your Knowledge</h3>
+                    <p data-i18n="quiz_intro_p">Complete the quiz to test your preparedness and earn a certificate.</p>
+                    <div class="quiz-selector">
+                        <select id="quiz-topic-select">
+                            <option value="general">General Safety</option>
+                            <option value="flood">Flood Safety</option>
+                            <option value="earthquake">Earthquake Safety</option>
+                            <option value="fire">Fire Safety</option>
+                        </select>
+                    </div>
+                    <button class="btn-primary" onclick="startQuiz()" data-i18n="btn_start_quiz">Start Quiz</button>
+                </div>
+                <div id="quiz-body" class="quiz-container hidden">
+                    <div class="quiz-header">
+                        <span id="question-number">Question 1/5</span>
+                        <div class="progress-bar"><div id="progress" style="width: 20%;"></div></div>
+                    </div>
+                    <h3 id="question-text"></h3>
+                    <div id="options-container" class="options-grid"></div>
+                    <button id="next-btn" class="btn-primary" disabled data-i18n="btn_next">Next Question</button>
+                </div>
+                <div id="quiz-result" class="quiz-container hidden">
+                    <div class="result-icon-box"><i class="fas fa-trophy"></i></div>
+                    <h2 data-i18n="quiz_completed">Quiz Completed!</h2>
+                    <p id="score-text"></p>
+                    <div id="certificate-area" class="hidden">
+                        <div class="certificate" id="certificate-print">
+                            <div class="cert-border">
+                                <div class="cert-header">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <h3>DisasterShield</h3>
+                                </div>
+                                <h1>CERTIFICATE OF COMPLETION</h1>
+                                <p>This is to certify that</p>
+                                <h2 id="cert-name">Valued Learner</h2>
+                                <p>has successfully passed the</p>
+                                <h4 id="cert-course-name">Disaster Preparedness Course</h4>
+                                <div class="cert-footer">
+                                    <div class="signature">
+                                        <div class="sig-line"></div>
+                                        <span>Director, DisasterShield</span>
+                                    </div>
+                                    <div class="cert-date">
+                                        <span id="cert-date">Date: 2026-06-21</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn-primary" onclick="printCertificate()"><i class="fas fa-download"></i> <span data-i18n="btn_download_cert">Download Certificate</span></button>
+                    </div>
+                    <button class="btn-outline" onclick="resetQuiz()" data-i18n="btn_retake">Retake Quiz</button>
+                </div>
+            </section>
+
+            <!-- Weather Dashboard -->
+            <section id="weather" class="page-section">
+                <h2 class="section-title" data-i18n="weather_title">Live Weather Alert Dashboard</h2>
+                <div class="weather-controls">
+                    <input type="text" id="weather-city-input" placeholder="Enter city name..." value="Chennai">
+                    <button class="btn-primary" onclick="getWeather()"><i class="fas fa-search"></i> Get Weather</button>
+                </div>
+                <div class="weather-grid">
+                    <div class="weather-card main-weather">
+                        <div class="weather-info">
+                            <h3 id="city-name">Chennai, IN</h3>
+                            <p id="weather-desc">Sunny</p>
+                            <h1 id="temp">32°C</h1>
+                        </div>
+                        <div class="weather-icon-large">
+                            <i class="fas fa-sun" id="main-w-icon"></i>
+                        </div>
+                    </div>
+                    <div class="weather-stats-grid">
+                        <div class="w-stat-item">
+                            <i class="fas fa-tint"></i>
+                            <div><span data-i18n="humidity">Humidity</span><p id="humidity">60%</p></div>
+                        </div>
+                        <div class="w-stat-item">
+                            <i class="fas fa-wind"></i>
+                            <div><span data-i18n="wind_speed">Wind Speed</span><p id="wind-speed">15 km/h</p></div>
+                        </div>
+                        <div class="w-stat-item">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                            <div><span data-i18n="pressure">Pressure</span><p id="pressure">1012 hPa</p></div>
+                        </div>
+                        <div class="w-stat-item">
+                            <i class="fas fa-eye"></i>
+                            <div><span data-i18n="visibility">Visibility</span><p id="visibility">10 km</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="weather-alerts" id="weather-alerts">
+                    <h3><i class="fas fa-exclamation-triangle"></i> <span data-i18n="active_alerts">Active Alerts</span></h3>
+                    <div id="alert-list">
+                        <p class="no-alerts" data-i18n="no_alerts">No active weather warnings in your area.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Checklist -->
+            <section id="checklist" class="page-section">
+                <h2 class="section-title" data-i18n="checklist_title">Emergency Preparedness Checklist</h2>
+                <div class="checklist-card">
+                    <div class="checklist-header">
+                        <p data-i18n="checklist_subtitle">Ensure you have these essentials ready at all times.</p>
+                        <button class="btn-text" onclick="resetChecklist()"><i class="fas fa-undo"></i> Reset</button>
+                    </div>
+                    <div class="checklist-items" id="checklist-items-container">
+                        <!-- Items injected by JS -->
+                    </div>
+                    <div class="checklist-progress">
+                        <div class="progress-bar"><div id="check-progress" style="width: 0%;"></div></div>
+                        <p id="check-count">0 of 10 items completed</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Emergency Contacts -->
+            <section id="emergency" class="page-section">
+                <h2 class="section-title" data-i18n="emergency_title">Emergency Contacts</h2>
+                <div class="contacts-grid">
+                    <div class="contact-card police">
+                        <div class="c-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h3 data-i18n="police">Police</h3>
+                        <p class="phone">100 / 911</p>
+                        <button class="btn-call" onclick="window.location.href='tel:100'"><i class="fas fa-phone"></i> Call Now</button>
+                    </div>
+                    <div class="contact-card fire">
+                        <div class="c-icon"><i class="fas fa-fire-extinguisher"></i></div>
+                        <h3 data-i18n="fire_service">Fire Service</h3>
+                        <p class="phone">101</p>
+                        <button class="btn-call" onclick="window.location.href='tel:101'"><i class="fas fa-phone"></i> Call Now</button>
+                    </div>
+                    <div class="contact-card ambulance">
+                        <div class="c-icon"><i class="fas fa-ambulance"></i></div>
+                        <h3 data-i18n="ambulance">Ambulance</h3>
+                        <p class="phone">102 / 108</p>
+                        <button class="btn-call" onclick="window.location.href='tel:108'"><i class="fas fa-phone"></i> Call Now</button>
+                    </div>
+                    <div class="contact-card disaster">
+                        <div class="c-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <h3 data-i18n="disaster_helpline">Disaster Helpline</h3>
+                        <p class="phone">104 / 1070</p>
+                        <button class="btn-call" onclick="window.location.href='tel:1070'"><i class="fas fa-phone"></i> Call Now</button>
+                    </div>
+                </div>
+                <div class="extra-contacts">
+                    <h3 data-i18n="regional_helplines">Regional Helplines</h3>
+                    <table class="helpline-table">
+                        <thead>
+                            <tr>
+                                <th data-i18n="region">Region</th>
+                                <th data-i18n="service">Service</th>
+                                <th data-i18n="number">Number</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>India (National)</td><td>Women Helpline</td><td>181</td></tr>
+                            <tr><td>India (National)</td><td>Child Helpline</td><td>1098</td></tr>
+                            <tr><td>USA (National)</td><td>Emergency</td><td>911</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SOS Page -->
+            <section id="sos" class="page-section">
+                <div class="sos-wrapper">
+                    <div class="sos-main">
+                        <div class="sos-ripple"></div>
+                        <button id="sos-btn" class="sos-button">SOS</button>
+                    </div>
+                    <h2 data-i18n="sos_h">EMERGENCY SOS</h2>
+                    <p data-i18n="sos_p">Press and hold for 3 seconds to trigger emergency alert.</p>
+                    <div id="sos-status" class="sos-status hidden">
+                        <div class="spinner"></div>
+                        <p data-i18n="sending_sos">Sending location to emergency services...</p>
+                    </div>
+                    <div class="sos-instructions">
+                        <h3 data-i18n="immediate_actions">Immediate Actions:</h3>
+                        <ul>
+                            <li data-i18n="sos_tip1">Stay calm and find a safe location.</li>
+                            <li data-i18n="sos_tip2">Check for injuries and apply first aid.</li>
+                            <li data-i18n="sos_tip3">Listen to local radio/news for updates.</li>
+                            <li data-i18n="sos_tip4">Follow evacuation orders immediately.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Learning Center -->
+            <section id="learning" class="page-section">
+                <h2 class="section-title" data-i18n="learning_title">Learning Center</h2>
+                <div class="learning-tabs">
+                    <button class="tab-btn active" data-tab="articles" data-i18n="tab_articles">Articles</button>
+                    <button class="tab-btn" data-tab="videos" data-i18n="tab_videos">Videos</button>
+                    <button class="tab-btn" data-tab="resources" data-i18n="tab_resources">Resources</button>
+                </div>
+                <div id="learning-content" class="learning-grid">
+                    <!-- Content injected by JS -->
+                </div>
+            </section>
+
+            <!-- Student Dashboard -->
+            <section id="dashboard" class="page-section">
+                <h2 class="section-title" data-i18n="dashboard_title">Student Dashboard</h2>
+                <div class="dashboard-grid">
+                    <div class="dash-card profile-card">
+                        <div class="profile-img"><i class="fas fa-user"></i></div>
+                        <h3 id="user-display-name">Guest User</h3>
+                        <p id="user-display-email">guest@disastershield.com</p>
+                        <button class="btn-outline btn-sm" onclick="showAuthModal()" data-i18n="btn_edit_profile">Edit Profile</button>
+                    </div>
+                    <div class="dash-card progress-card">
+                        <h3 data-i18n="learning_progress">Learning Progress</h3>
+                        <div class="progress-circle-container">
+                            <div class="progress-circle" id="dash-progress-circle">
+                                <span id="progress-val">0%</span>
+                            </div>
+                        </div>
+                        <p id="modules-completed">0 of 10 modules completed</p>
+                    </div>
+                    <div class="dash-card history-card">
+                        <h3 data-i18n="quiz_history">Quiz History</h3>
+                        <ul id="quiz-history-list" class="history-list">
+                            <li class="empty-history" data-i18n="no_history">No quizzes taken yet.</li>
+                        </ul>
+                    </div>
+                    <div class="dash-card cert-card">
+                        <h3 data-i18n="my_certificates">My Certificates</h3>
+                        <div id="cert-list" class="cert-thumbnails">
+                            <p class="empty-certs" data-i18n="no_certs">Complete quizzes to earn certificates.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ -->
+            <section id="faq" class="page-section">
+                <h2 class="section-title" data-i18n="faq_title">Frequently Asked Questions</h2>
+                <div class="accordion" id="faq-accordion">
+                    <!-- FAQ items injected by JS -->
+                </div>
+            </section>
+
+            <!-- About -->
+            <section id="about" class="page-section">
+                <h2 class="section-title" data-i18n="about_title">About DisasterShield</h2>
+                <div class="about-card">
+                    <div class="about-header">
+                        <i class="fas fa-shield-alt"></i>
+                        <h2>DisasterShield</h2>
+                        <p>Version 2.0 (Enhanced Edition)</p>
+                    </div>
+                    <div class="about-body">
+                        <p data-i18n="about_p1">DisasterShield is a state-of-the-art education system designed to prepare individuals and communities for natural and man-made disasters. Our mission is to provide accessible, life-saving information through modern technology.</p>
+                        <h3 data-i18n="project_goals">Project Goals:</h3>
+                        <ul>
+                            <li data-i18n="goal1">Educate the public on 10+ major disaster types.</li>
+                            <li data-i18n="goal2">Provide interactive learning tools and certification.</li>
+                            <li data-i18n="goal3">Offer real-time safety information and emergency SOS alerts.</li>
+                            <li data-i18n="goal4">Multi-language support for inclusive safety education.</li>
+                        </ul>
+                        <div class="developer-info">
+                            <h3 data-i18n="dev_info">Developer Information</h3>
+                            <p data-i18n="dev_text">Developed with ❤️ for global safety and preparedness.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact -->
+            <section id="contact" class="page-section">
+                <h2 class="section-title" data-i18n="contact_title">Contact Us</h2>
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4 data-i18n="location">Location</h4>
+                                <p>123 Safety Ave, Preparedness City</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4 data-i18n="phone_label">Phone</h4>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4 data-i18n="email_label">Email</h4>
+                                <p>support@disastershield.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form-card">
+                        <form id="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label data-i18n="label_name">Name</label>
+                                    <input type="text" id="contact-name" placeholder="Your Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label data-i18n="label_email">Email</label>
+                                    <input type="email" id="contact-email" placeholder="Your Email" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label data-i18n="label_subject">Subject</label>
+                                <select id="contact-subject">
+                                    <option value="general">General Inquiry</option>
+                                    <option value="technical">Technical Support</option>
+                                    <option value="feedback">Feedback</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label data-i18n="label_message">Message</label>
+                                <textarea id="contact-message" placeholder="Your Message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary" data-i18n="btn_send">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="f-logo"><i class="fas fa-shield-alt"></i> DisasterShield</div>
+                    <p data-i18n="footer_tagline">Empowering communities through knowledge and preparedness.</p>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="quick_links">Quick Links</h4>
+                    <ul>
+                        <li onclick="navigateTo('home')" data-i18n="nav_home">Home</li>
+                        <li onclick="navigateTo('modules')" data-i18n="nav_modules">Modules</li>
+                        <li onclick="navigateTo('emergency')" data-i18n="nav_emergency">Emergency</li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4 data-i18n="follow_us">Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 DisasterShield. <span data-i18n="all_rights">All rights reserved.</span></p>
+            </div>
+        </footer>
+    </main>
+
+    <!-- AI Assistant Floating Button -->
+    <div id="ai-chat-btn" class="ai-btn" onclick="toggleChat()">
+        <i class="fas fa-robot"></i>
+        <span class="pulse-ring"></span>
+    </div>
+
+    <!-- AI Chat Window -->
+    <div id="chat-window" class="chat-window hidden">
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <i class="fas fa-robot"></i>
+                <span>AI Disaster Assistant</span>
+            </div>
+            <button id="close-chat" onclick="toggleChat()"><i class="fas fa-times"></i></button>
+        </div>
+        <div id="chat-messages" class="chat-messages">
+            <div class="message bot">Hello! I'm your AI assistant. How can I help you with disaster preparedness today?</div>
+        </div>
+        <div class="chat-input">
+            <button id="voice-input" class="icon-btn"><i class="fas fa-microphone"></i></button>
+            <input type="text" id="user-msg" placeholder="Ask a question..." onkeypress="if(event.key==='Enter') sendMessage()">
+            <button id="send-msg" class="icon-btn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeAuthModal()">&times;</span>
+            <div id="login-form-div">
+                <h2 data-i18n="login">Login</h2>
+                <form onsubmit="handleAuth(event, 'login')">
+                    <div class="form-group">
+                        <input type="email" id="login-email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="login-pass" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn-primary w-100" data-i18n="login">Login</button>
+                    <p class="auth-switch">Don't have an account? <a href="#" onclick="switchAuth('register')">Register</a></p>
+                </form>
+            </div>
+            <div id="register-form-div" class="hidden">
+                <h2 data-i18n="register">Register</h2>
+                <form onsubmit="handleAuth(event, 'register')">
+                    <div class="form-group">
+                        <input type="text" id="reg-name" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="reg-email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="reg-pass" placeholder="Password" required>
+                    </div>
+                    <button type="submit" class="btn-primary w-100" data-i18n="register">Create Account</button>
+                    <p class="auth-switch">Already have an account? <a href="#" onclick="switchAuth('login')">Login</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
